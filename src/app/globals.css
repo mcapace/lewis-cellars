@@ -1,26 +1,166 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-black text-white font-inter;
+    overflow-x: hidden;
+  }
+  
+  * {
+    @apply border-border;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .btn-primary {
+    @apply bg-gold-gradient text-black px-8 py-4 font-semibold text-sm uppercase tracking-wider rounded-sm transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/25 hover:-translate-y-1;
+  }
+  
+  .btn-secondary {
+    @apply border border-gold-500 text-gold-500 px-8 py-4 font-semibold text-sm uppercase tracking-wider rounded-sm transition-all duration-300 hover:bg-gold-500 hover:text-black;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent;
+  }
+  
+  .section-title {
+    @apply font-playfair text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight;
+  }
+  
+  .section-subtitle {
+    @apply font-inter text-sm uppercase tracking-widest text-gray-300 mb-4;
+  }
+  
+  .section-description {
+    @apply text-lg text-gray-300 leading-relaxed max-w-2xl;
+  }
+  
+  .wine-bottle {
+    @apply relative w-24 h-60 md:w-32 md:h-80 rounded-lg shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2;
+  }
+  
+  .bottle-label {
+    @apply absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center;
+  }
+  
+  .label-emblem {
+    @apply w-12 h-12 md:w-16 md:h-16 rounded-full mx-auto mb-2 flex items-center justify-center font-playfair text-lg md:text-xl font-bold text-black shadow-lg;
+  }
+  
+  .label-text {
+    @apply text-white text-xs md:text-sm leading-tight;
+  }
+  
+  .page-transition {
+    @apply transition-all duration-700 ease-in-out;
+  }
+  
+  .hero-bg {
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8941f;
+}
+
+/* Loading animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Parallax effect */
+.parallax {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Image placeholder styles */
+.image-placeholder {
+  @apply bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg flex items-center justify-center text-gray-500;
+}
+
+.image-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+  animation: shimmer 2s infinite;
+}
+
+/* Wine bottle specific styles */
+.bottle-chardonnay {
+  background: linear-gradient(180deg, #f5f5dc 0%, #e6e6b8 50%, #d4d4a8 100%);
+  border: 2px solid #d4d4a8;
+}
+
+.bottle-cabernet, .bottle-big-blend {
+  background: linear-gradient(180deg, #2c1810 0%, #1a0f08 50%, #0d0704 100%);
+  border: 2px solid #1a0f08;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .section-title {
+    @apply text-3xl;
+  }
+  
+  .wine-bottle {
+    @apply w-20 h-48;
+  }
+  
+  .label-emblem {
+    @apply w-10 h-10 text-base;
+  }
 }
