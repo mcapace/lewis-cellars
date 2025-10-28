@@ -145,33 +145,39 @@ export default function Home() {
           className="min-h-screen flex items-center justify-center pt-20 pb-20"
         >
           {currentPage === 0 && (
-            <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <section className="w-full min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
               <div className="hero-bg absolute inset-0 pointer-events-none" />
               
-              {/* Wine Bottles */}
+              {/* Wine Bottles - Centered at top */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
-                className="flex justify-center items-end space-x-8 md:space-x-12 mb-16"
+                className="flex justify-center items-center space-x-8 md:space-x-16 mb-16"
               >
                 {wines.map((wine, index) => (
                   <WineBottle key={wine.type} wine={wine} index={index} />
                 ))}
               </motion.div>
 
-              {/* Hero Text */}
+              {/* Hero Text - Centered below bottles */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="max-w-4xl mx-auto"
+                className="text-center max-w-4xl mx-auto"
               >
-                <h2 className="section-subtitle">{pages[0].subtitle}</h2>
-                <h1 className="section-title text-gradient mb-6">{pages[0].title}</h1>
-                <p className="section-description mx-auto mb-8">{pages[0].description}</p>
+                <h2 className="text-sm uppercase tracking-widest text-gray-300 mb-4 font-inter">
+                  {pages[0].subtitle}
+                </h2>
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-semibold text-white mb-6 leading-tight">
+                  {pages[0].title}
+                </h1>
+                <p className="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto">
+                  {pages[0].description}
+                </p>
                 <motion.button
-                  className="btn-primary"
+                  className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-8 py-4 font-semibold text-sm uppercase tracking-wider rounded-sm transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/25 hover:-translate-y-1"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

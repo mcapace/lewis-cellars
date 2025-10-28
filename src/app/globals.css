@@ -44,11 +44,11 @@
   }
   
   .wine-bottle {
-    @apply relative w-24 h-60 md:w-32 md:h-80 rounded-lg shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2;
+    @apply relative w-24 h-72 md:w-32 md:h-96 rounded-lg shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2;
   }
   
   .bottle-label {
-    @apply absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center;
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center;
   }
   
   .label-emblem {
@@ -141,13 +141,15 @@
 
 /* Wine bottle specific styles */
 .bottle-chardonnay {
-  background: linear-gradient(180deg, #f5f5dc 0%, #e6e6b8 50%, #d4d4a8 100%);
+  background: linear-gradient(180deg, #fefdf8 0%, #f5f5dc 50%, #e6e6b8 100%);
   border: 2px solid #d4d4a8;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .bottle-cabernet, .bottle-big-blend {
-  background: linear-gradient(180deg, #2c1810 0%, #1a0f08 50%, #0d0704 100%);
-  border: 2px solid #1a0f08;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 50%, #000000 100%);
+  border: 2px solid #333333;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 /* Responsive typography */
