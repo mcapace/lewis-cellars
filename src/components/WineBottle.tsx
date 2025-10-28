@@ -28,7 +28,7 @@ const WineBottle = ({ wine, index }: WineBottleProps) => {
     >
       {/* Wine Bottle Container */}
       <motion.div
-        className="relative mb-6"
+        className="relative"
         whileHover={{ 
           scale: 1.05,
           y: -10,
@@ -40,29 +40,31 @@ const WineBottle = ({ wine, index }: WineBottleProps) => {
             : '0 20px 40px rgba(0, 0, 0, 0.5)'
         }}
       >
-        {/* Main Bottle Body */}
-        <div className={`relative w-24 h-72 md:w-32 md:h-96 rounded-lg ${
+        {/* Main Bottle Body - Proper wine bottle shape */}
+        <div className={`relative w-20 h-80 md:w-28 md:h-96 ${
           wine.bottleType === 'chardonnay' 
-            ? 'bg-gradient-to-b from-amber-50 via-amber-100 to-amber-200 border-2 border-amber-300' 
-            : 'bg-gradient-to-b from-gray-900 via-gray-800 to-black border-2 border-gray-700'
+            ? 'bg-gradient-to-b from-amber-50 via-amber-100 to-amber-200' 
+            : 'bg-gradient-to-b from-gray-900 via-gray-800 to-black'
+        } rounded-t-lg rounded-b-3xl border-2 ${
+          wine.bottleType === 'chardonnay' ? 'border-amber-300' : 'border-gray-700'
         }`}>
           
           {/* Bottle Neck */}
-          <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-6 bg-gray-800 rounded-t-full"></div>
+          <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-3 h-8 bg-gray-800 rounded-t-full"></div>
           
           {/* Bottle Cap/Foil */}
-          <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-6 h-3 bg-black rounded-t-full"></div>
+          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-5 h-2 bg-black rounded-t-full"></div>
           
           {/* Wine Level (for Chardonnay) */}
           {wine.bottleType === 'chardonnay' && (
-            <div className="absolute bottom-4 left-2 right-2 h-2 bg-gradient-to-r from-transparent via-yellow-200/30 to-transparent rounded-full"></div>
+            <div className="absolute bottom-8 left-3 right-3 h-1 bg-gradient-to-r from-transparent via-yellow-200/40 to-transparent rounded-full"></div>
           )}
           
-          {/* Label Area */}
+          {/* Label Area - Positioned like in Figma */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
             {/* Circular Emblem */}
             <motion.div
-              className={`w-12 h-12 md:w-16 md:h-16 rounded-full mx-auto mb-2 flex items-center justify-center font-playfair text-lg md:text-xl font-bold text-black shadow-lg ${
+              className={`w-10 h-10 md:w-14 md:h-14 rounded-full mx-auto mb-3 flex items-center justify-center font-playfair text-lg md:text-xl font-bold text-black shadow-lg ${
                 wine.emblemColor === 'gold' 
                   ? 'bg-gradient-to-br from-yellow-400 to-yellow-600' 
                   : 'bg-gradient-to-br from-amber-600 to-amber-800'
